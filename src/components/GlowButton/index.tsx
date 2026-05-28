@@ -21,7 +21,7 @@ const GlowButton: React.FC<Props> = ({ children, onClick, className, type = 'but
       className={clsx(styles.gb, ...variants.map(v => styles[v]), className)}
       onClick={onClick}
     >
-      <span className={styles.text} data-text={label}>
+      <span className={styles.text}>
         {children}
       </span>
     </button>

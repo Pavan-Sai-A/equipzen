@@ -51,7 +51,8 @@ const Footer: React.FC = () => {
         <div className={styles.cta}>
           <div className={styles.ctaBlob} />
           <div className={`${styles.ctaBlob} ${styles.blob2}`} />
-          <div className={`container ${styles.ctaRow}`}>
+          <div className="container">
+            <div className={styles.ctaRow}>
             <div>
               <span className={styles.ctaEyebrow}>Let's Work Together</span>
               <h2 className={styles.ctaHeading}>Ready to Transform<br />Your Business?</h2>
@@ -65,13 +66,13 @@ const Footer: React.FC = () => {
                 <FiPhone /> 9398919934
               </a>
             </div>
+            </div>
           </div>
         </div>
-
-        {/* Main Grid */}
         <div className={styles.body}>
-          <div className={`container ${styles.grid}`}>
-            {/* Brand */}
+          <div className="container">
+            <div className={styles.grid}>
+              {/* Brand */}
             <div className={styles.brand}>
               <div className={styles.logo}>
                 <img src="/logo.jpg" alt="Equipzen" />
@@ -146,19 +147,20 @@ const Footer: React.FC = () => {
               </div>
               <ul className={styles.contactList}>
                 <li><span className={styles.ci}><FiPhone /></span><a href="tel:9398919934">9398919934</a></li>
-                <li>
+                <li className={styles.multiLine}>
                   <span className={styles.ci}><FiMail /></span>
-                  <div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
                     <a href="mailto:md@equipzen.in">md@equipzen.in</a>
                     <a href="mailto:info@equipzen.in">info@equipzen.in</a>
                   </div>
                 </li>
                 <li><span className={styles.ci}><FiGlobe /></span><a href="https://www.equipzen.in" target="_blank" rel="noreferrer">www.equipzen.in</a></li>
-                <li>
+                <li className={styles.multiLine}>
                   <span className={styles.ci}><FiMapPin /></span>
                   <span>Flat no 406, Aavaas Apartment,<br />Kankipadu 521151,<br />Vijayawada, A.P, India</span>
                 </li>
               </ul>
+            </div>
             </div>
           </div>
         </div>

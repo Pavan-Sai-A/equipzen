@@ -49,7 +49,6 @@
       background: $brand-hover;
       box-shadow: 0 8px 28px rgba(10, 34, 64, 0.25);
     }
-    .text::after { background: $brand-hover; }
   }
 
   &.sm {
@@ -80,23 +79,5 @@
 .text {
   position: relative;
   display: block;
-  overflow: hidden;
   line-height: 1.2;
-
-  &::after {
-    content: attr(data-text);
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: translateY(100%);
-    transition: transform 0.45s $ease-out-expo;
-    background: $accent-dark;
-    border-radius: inherit;
-  }
-
-  .gb:hover &::after { transform: translateY(0%); }
-
-  @media (hover: none) { &::after { display: none; } }
 }
