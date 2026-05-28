@@ -1,34 +1,52 @@
 @use '../../styles/variables' as *;
 
 .contact {
-  background: $black;
+  background: #f8faff;
   position: relative;
   overflow: hidden;
 }
 
 .bgGlow {
   position: absolute;
-  width: clamp(250px, 45vw, 600px);
-  height: clamp(250px, 45vw, 600px);
-  background: radial-gradient(circle, rgba(255, 107, 0, 0.06) 0%, transparent 65%);
+  width: clamp(300px, 50vw, 700px);
+  height: clamp(300px, 50vw, 700px);
+  background: radial-gradient(circle, rgba(27, 110, 243, 0.06) 0%, transparent 65%);
   bottom: -10%;
   right: -8%;
   border-radius: 50%;
   pointer-events: none;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 48px;
-  align-items: start;
+// ── Centered heading ──────────────────────────────
+.centeredHead {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  @include respond($bp-lg) { gap: 36px; }
-  @include respond($bp-md) { grid-template-columns: 1fr; gap: 32px; }
+  :global(.section-sub) {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
-// ── Info cards ────────────────────────────────────
-.info {
+.centeredDivider {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// ── 2-col grid ────────────────────────────────────
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 32px;
+  align-items: start;
+
+  @include respond($bp-md) { grid-template-columns: 1fr; gap: 24px; }
+}
+
+// ── Info panel ────────────────────────────────────
+.infoPanel {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -36,109 +54,109 @@
 
 .infoCard {
   display: flex;
-  gap: 14px;
   align-items: flex-start;
+  gap: 16px;
   background: #fff;
-  border: 1px solid $black-4;
-  border-radius: $radius-md + 2;
-  padding: 18px 20px;
-  box-shadow: 0 2px 12px rgba(10, 34, 64, 0.05);
-  transition: border-color $transition-slow, box-shadow $transition-slow, transform $transition-base;
-  cursor: default;
+  border: 1px solid rgba(27, 110, 243, 0.1);
+  border-radius: $radius-lg;
+  padding: 20px;
+  box-shadow: 0 2px 16px rgba(27, 110, 243, 0.05);
+  transition: box-shadow $transition-base, transform $transition-base, border-color $transition-base;
 
   &:hover {
-    border-color: rgba(10, 34, 64, 0.2) !important;
-    box-shadow: 0 8px 28px rgba(10, 34, 64, 0.1);
+    box-shadow: 0 8px 32px rgba(27, 110, 243, 0.1);
+    border-color: rgba(27, 110, 243, 0.2);
     transform: translateX(4px);
   }
-
-  @include respond($bp-sm) { padding: 14px 16px; }
 }
 
 .infoIcon {
-  @include brand-icon(40px, $radius-sm + 2);
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 107, 0, 0.08);
+  border-radius: $radius-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $accent;
   font-size: 1rem;
+  flex-shrink: 0;
+  transition: background $transition-base, transform $transition-base;
 
   .infoCard:hover & {
-    background: $accent-light;
-    color: $accent;
+    background: rgba(255, 107, 0, 0.14);
     transform: scale(1.08);
   }
 }
 
-.infoBody {
-  min-width: 0;
-
-  h4 {
-    font-size: 0.68rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: $accent;
-    margin-bottom: 5px;
-    font-weight: 700;
-  }
-
-  a, p {
-    display: block;
-    color: $gray;
-    font-size: 0.86rem;
-    text-decoration: none;
-    line-height: 1.65;
-    transition: color $transition-base;
-    word-break: break-word;
-  }
-
-  a:hover { color: $brand; }
-  a:focus-visible { outline: 2px solid $accent; border-radius: 2px; }
+.infoLabel {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: $accent;
+  margin-bottom: 6px;
 }
+
+.infoCard a,
+.infoCard span {
+  display: block;
+  color: #3d4f63;
+  font-size: 0.88rem;
+  text-decoration: none;
+  line-height: 1.65;
+  transition: color $transition-fast;
+  word-break: break-word;
+}
+
+.infoCard a:hover { color: $brand; }
 
 // ── Form ──────────────────────────────────────────
 .form {
   background: #fff;
-  border: 1px solid $black-4;
+  border: 1px solid rgba(27, 110, 243, 0.1);
   border-radius: $radius-xl;
-  padding: 36px 32px;
+  padding: 40px 36px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  box-shadow: 0 4px 24px rgba(10, 34, 64, 0.07);
+  gap: 20px;
+  box-shadow: 0 8px 48px rgba(27, 110, 243, 0.08);
 
-  @include respond($bp-md) { padding: 28px 24px; }
-  @include respond($bp-sm) { padding: 22px 18px; gap: 14px; }
+  @include respond($bp-md) { padding: 32px 28px; }
+  @include respond($bp-sm) { padding: 24px 20px; gap: 16px; }
 }
 
 .formRow {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-  @include respond($bp-sm) { grid-template-columns: 1fr; gap: 14px; }
+  @include respond($bp-sm) { grid-template-columns: 1fr; }
 }
 
 .field {
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 8px;
 
   label {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 700;
     color: $brand;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
     text-transform: uppercase;
   }
 
   input,
   textarea {
-    background: $black-2;
-    border: 1px solid $black-4;
-    border-radius: $radius-sm + 2;
-    padding: 12px 15px;
-    color: $brand;
+    background: #f8faff;
+    border: 1.5px solid rgba(27, 110, 243, 0.12);
+    border-radius: $radius-md;
+    padding: 12px 16px;
+    color: #0d1b2e;
     font-family: 'Satoshi', 'Inter', sans-serif;
-    font-size: 0.92rem;
+    font-size: 0.93rem;
     outline: none;
     transition: border-color $transition-base, background $transition-base, box-shadow $transition-base;
-    resize: vertical;
     width: 100%;
     min-height: 44px;
     appearance: none;
@@ -147,23 +165,22 @@
     &:focus {
       border-color: $brand;
       background: #fff;
-      box-shadow: 0 0 0 3px rgba(10, 34, 64, 0.08);
+      box-shadow: 0 0 0 4px rgba(27, 110, 243, 0.08);
     }
 
-    &::placeholder { color: $muted; }
+    &::placeholder { color: #b0bec8; }
 
     &:invalid:not(:placeholder-shown) {
       border-color: rgba(239, 68, 68, 0.5);
     }
   }
 
-  textarea { resize: none; min-height: auto; }
+  textarea { resize: none; }
 }
 
 .submitBtn {
   width: 100%;
   justify-content: center;
-  margin-top: 4px;
 }
 
 // ── Toast ─────────────────────────────────────────
@@ -185,8 +202,6 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   white-space: nowrap;
   max-width: calc(100vw - 40px);
-
-  &.toastError { background: #dc2626; }
 
   @include respond($bp-sm) {
     font-size: 0.82rem;

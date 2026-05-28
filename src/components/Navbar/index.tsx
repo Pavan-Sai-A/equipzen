@@ -9,11 +9,10 @@ import type { NavLink } from '../../types';
 const NAV_LINKS: NavLink[] = [
   { label: 'Home', to: 'home' },
   { label: 'About Us', to: 'about' },
-  { label: 'Services', to: 'services' },
   { label: 'Contact Us', to: 'contact' },
 ];
 
-const SECTIONS = ['home', 'about', 'services', 'contact'];
+const SECTIONS = ['home', 'about', 'contact'];
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);

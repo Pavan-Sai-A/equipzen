@@ -2,9 +2,7 @@
 
 .section {
   background: $brand;
-  border-top: none;
-  border-bottom: none;
-  padding: 16px 0;
+  padding: 14px 0;
   overflow: hidden;
 }
 
@@ -32,10 +30,22 @@
   to   { transform: translateX(-100%); }
 }
 
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  font-size: 0.82rem;
+  flex-shrink: 0;
+}
+
 .item {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 10px;
   padding: 0 28px;
   font-size: 0.85rem;
   font-weight: 600;

@@ -1,38 +1,38 @@
 // ── Brand ──────────────────────────────────────────
-$brand:        #0A2240;
-$brand-dark:   #061628;
-$brand-hover:  #0d2e56;
-$brand-glow:   rgba(10, 34, 64, 0.18);
-$brand-light:  rgba(10, 34, 64, 0.07);
+$brand:        #1B6EF3;
+$brand-dark:   #1459cc;
+$brand-hover:  #2278ff;
+$brand-glow:   rgba(27, 110, 243, 0.18);
+$brand-light:  rgba(27, 110, 243, 0.07);
 $accent:       #FF6B00;
 $accent-dark:  #e05e00;
 $accent-light: rgba(255, 107, 0, 0.1);
 
 // ── Backgrounds ────────────────────────────────────
-$black:     #ffffff;
-$black-2:   #f4f6fb;
-$black-3:   #eaeff7;
-$black-4:   #dde3ee;
-$footer-bg: #0A2240;
+  $black:     #f8faff;
+$black-2:   #f0f4fd;
+$black-3:   #e4ecf8;
+$black-4:   rgba(27, 110, 243, 0.1);
+$footer-bg: #0d1b2e;
 
 // ── Text ───────────────────────────────────────────
-$white:  #0A2240;
+$white:  #1B6EF3;
 $gray:   #5a6a7e;
 $gray-2: #3d4f63;
 $muted:  #9aaabb;
 
 // ── Glass ──────────────────────────────────────────
-$glass:        rgba(255, 255, 255, 0.8);
-$glass-border: rgba(10, 34, 64, 0.1);
+$glass:        rgba(255, 255, 255, 0.85);
+$glass-border: rgba(27, 110, 243, 0.1);
 
 // ── Gradients ──────────────────────────────────────
-$gradient:      linear-gradient(135deg, #0A2240 0%, #1a4a7a 60%, #FF6B00 100%);
-$gradient-text: linear-gradient(135deg, #0A2240 0%, #1a4a7a 100%);
+$gradient:      linear-gradient(135deg, #1B6EF3 0%, #1459cc 60%, #FF6B00 100%);
+$gradient-text: linear-gradient(135deg, #1B6EF3 0%, #1459cc 100%);
 
 // ── Spacing ────────────────────────────────────────
-$section-py:      110px;
-$section-py-md:   80px;
-$section-py-sm:   60px;
+$section-py:      100px;
+$section-py-md:   72px;
+$section-py-sm:   56px;
 $container-max:   1200px;
 $container-px:    32px;
 $container-px-sm: 20px;
@@ -77,7 +77,7 @@ $bp-xl: 1280px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $brand;
+  color: $accent;
   flex-shrink: 0;
   transition: background $transition-base, transform $transition-base;
 }
@@ -85,8 +85,8 @@ $bp-xl: 1280px;
 @mixin hover-card {
   transition: border-color $transition-slow, box-shadow $transition-slow, transform $transition-base;
   &:hover {
-    border-color: rgba(10, 34, 64, 0.2) !important;
-    box-shadow: 0 20px 48px rgba(10, 34, 64, 0.1);
+    border-color: rgba(27, 110, 243, 0.2) !important;
+    box-shadow: 0 20px 48px rgba(27, 110, 243, 0.1);
     transform: translateY(-4px);
   }
 }

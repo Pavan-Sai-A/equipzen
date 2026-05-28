@@ -55,7 +55,7 @@ const ParticleCanvas = memo(() => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       pts.forEach(p => {
         ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(10,34,64,${p.o * 0.5})`; ctx.fill();
+        ctx.fillStyle = `rgba(27,110,243,${p.o * 0.4})`; ctx.fill();
         p.x += p.dx; p.y += p.dy;
         if (p.x < 0 || p.x > canvas.width)  p.dx *= -1;
         if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
@@ -65,7 +65,7 @@ const ParticleCanvas = memo(() => {
           const d = Math.hypot(pts[i].x - pts[j].x, pts[i].y - pts[j].y);
           if (d < 110) {
             ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y);
-            ctx.strokeStyle = `rgba(10,34,64,${0.05 * (1 - d / 110)})`; ctx.lineWidth = 0.5; ctx.stroke();
+            ctx.strokeStyle = `rgba(27,110,243,${0.04 * (1 - d / 110)})`; ctx.lineWidth = 0.5; ctx.stroke();
           }
         }
       animId = requestAnimationFrame(draw);
@@ -135,8 +135,8 @@ const Hero: React.FC = () => {
         </motion.p>
 
         <motion.div className={styles.btns} {...up(0.62)}>
-          <Link to="services" smooth duration={350} offset={-70}>
-            <GlowButton>Explore Services</GlowButton>
+          <Link to="about" smooth duration={350} offset={-70}>
+            <GlowButton>Learn More</GlowButton>
           </Link>
           <Link to="contact" smooth duration={350} offset={-70} className={styles.btnGhost}>
             <span>Get In Touch</span>

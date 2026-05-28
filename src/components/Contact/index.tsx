@@ -3,14 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiPhone, FiMail, FiMapPin, FiGlobe, FiCheckCircle } from 'react-icons/fi';
 import GlowButton from '../GlowButton';
 import styles from './Contact.module.scss';
-import type { ContactInfo, FormStatus, ContactForm } from '../../types';
-
-const INFO: ContactInfo[] = [
-  { icon: <FiPhone />,  label: 'Phone',   lines: [{ text: '9398919934', href: 'tel:9398919934' }] },
-  { icon: <FiMail />,   label: 'Email',   lines: [{ text: 'md@equipzen.in', href: 'mailto:md@equipzen.in' }, { text: 'info@equipzen.in', href: 'mailto:info@equipzen.in' }] },
-  { icon: <FiGlobe />,  label: 'Website', lines: [{ text: 'www.equipzen.in', href: 'https://www.equipzen.in' }] },
-  { icon: <FiMapPin />, label: 'Office',  lines: [{ text: 'Flat no 406, 4th Floor, Aavaas Apartment, Kankipadu 521151, Vijayawada, A.P, India' }] },
-];
+import type { FormStatus, ContactForm } from '../../types';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -43,7 +36,7 @@ const Contact: React.FC = () => {
       <div className={styles.bgGlow} />
       <div className="container">
         <motion.div
-          className="section-head"
+          className={`section-head ${styles.centeredHead}`}
           initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }}
           variants={{ show: { transition: { staggerChildren: 0.1 } } }}
         >
@@ -51,34 +44,52 @@ const Contact: React.FC = () => {
           <motion.span className="section-label" variants={fadeUp}>Get In Touch</motion.span>
           <motion.h2 className="section-title" variants={fadeUp}>Contact <span>Us</span></motion.h2>
           <motion.p className="section-sub" variants={fadeUp}>We are here to answer your questions and help you find the right solutions.</motion.p>
-          <motion.div className="divider" variants={fadeUp} />
+          <motion.div className={`divider ${styles.centeredDivider}`} variants={fadeUp} />
         </motion.div>
 
         <div className={styles.grid}>
+          {/* Info Panel */}
           <motion.div
-            className={styles.info}
-            initial={{ opacity: 0, x: -36 }} whileInView={{ opacity: 1, x: 0 }}
+            className={styles.infoPanel}
+            initial={{ opacity: 0, x: -32 }} whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            {INFO.map(({ icon, label, lines }) => (
-              <motion.div className={styles.infoCard} key={label} whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
-                <div className={styles.infoIcon}>{icon}</div>
-                <div className={styles.infoBody}>
-                  <h4>{label}</h4>
-                  {lines.map(({ text, href }) =>
-                    href
-                      ? <a key={text} href={href} target={href.startsWith('http') ? '_blank' : undefined} rel="noreferrer">{text}</a>
-                      : <p key={text}>{text}</p>
-                  )}
-                </div>
-              </motion.div>
-            ))}
+            <div className={styles.infoCard}>
+              <div className={styles.infoIcon}><FiPhone /></div>
+              <div>
+                <p className={styles.infoLabel}>Phone</p>
+                <a href="tel:+919398919934">+91 9398919934</a>
+              </div>
+            </div>
+            <div className={styles.infoCard}>
+              <div className={styles.infoIcon}><FiMail /></div>
+              <div>
+                <p className={styles.infoLabel}>Email</p>
+                <a href="mailto:md@equipzen.in">md@equipzen.in</a>
+                <a href="mailto:info@equipzen.in">info@equipzen.in</a>
+              </div>
+            </div>
+            <div className={styles.infoCard}>
+              <div className={styles.infoIcon}><FiGlobe /></div>
+              <div>
+                <p className={styles.infoLabel}>Website</p>
+                <a href="https://www.equipzen.in" target="_blank" rel="noreferrer">www.equipzen.in</a>
+              </div>
+            </div>
+            <div className={styles.infoCard}>
+              <div className={styles.infoIcon}><FiMapPin /></div>
+              <div>
+                <p className={styles.infoLabel}>Office</p>
+                <span>Flat no 406, Aavaas Apartment,<br />Kankipadu 521151,<br />Vijayawada, A.P, India</span>
+              </div>
+            </div>
           </motion.div>
 
+          {/* Form */}
           <motion.form
             className={styles.form}
             onSubmit={handleSubmit}
-            initial={{ opacity: 0, x: 36 }} whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: 32 }} whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className={styles.formRow}>
@@ -93,9 +104,8 @@ const Contact: React.FC = () => {
             </div>
             <div className={styles.field}>
               <label htmlFor="message">Message</label>
-              <textarea id="message" name="message" placeholder="Tell us about your project..." rows={5} value={form.message} onChange={handleChange} required />
+              <textarea id="message" name="message" placeholder="Tell us about your project..." rows={6} value={form.message} onChange={handleChange} required />
             </div>
-
             <GlowButton
               type="submit"
               className={styles.submitBtn}

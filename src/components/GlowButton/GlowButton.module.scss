@@ -19,14 +19,15 @@
   transition: background $transition-fast, transform $transition-fast, box-shadow $transition-base;
   touch-action: manipulation;
   user-select: none;
+  letter-spacing: 0.1px;
 
   @include focus-ring;
 
-  &::before {
+  &::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+    background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 60%);
     pointer-events: none;
     border-radius: inherit;
   }
@@ -42,12 +43,11 @@
     box-shadow: none;
   }
 
-  // Navy variant — used in Navbar
   &.navy {
     background: $brand;
     &:hover {
       background: $brand-hover;
-      box-shadow: 0 8px 28px rgba(10, 34, 64, 0.25);
+      box-shadow: 0 8px 28px rgba(27, 110, 243, 0.3);
     }
   }
 
@@ -75,7 +75,6 @@
   }
 }
 
-// ── Text slide animation ───────────────────────────
 .text {
   position: relative;
   display: block;
