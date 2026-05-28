@@ -1,0 +1,174 @@
+@use '../../styles/variables' as *;
+
+.about {
+  background: $black;
+  position: relative;
+  overflow: hidden;
+}
+
+.bgGlow {
+  position: absolute;
+  width: clamp(300px, 50vw, 600px);
+  height: clamp(300px, 50vw, 600px);
+  background: radial-gradient(circle, rgba(255, 107, 0, 0.05) 0%, transparent 65%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  margin-bottom: 56px;
+  align-items: start;
+
+  @include respond($bp-lg) { gap: 40px; }
+  @include respond($bp-md) { grid-template-columns: 1fr; gap: 36px; margin-bottom: 40px; }
+}
+
+.text {
+  p {
+    color: $gray;
+    line-height: 1.8;
+    margin-bottom: 18px;
+    font-size: 0.97rem;
+    @include respond($bp-sm) { font-size: 0.92rem; }
+  }
+}
+
+// ── Skill bars ────────────────────────────────────
+.skillBars {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.skillTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 0.84rem;
+  color: $gray-2;
+  font-weight: 600;
+}
+
+.skillPct {
+  color: $accent;
+  font-weight: 700;
+  font-size: 0.82rem;
+}
+
+.skillTrack {
+  height: 6px;
+  background: $black-3;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.skillFill {
+  height: 100%;
+  background: linear-gradient(90deg, $brand, $accent);
+  border-radius: 3px;
+  transform-origin: left;
+}
+
+// ── Why card ──────────────────────────────────────
+.whyCard {
+  background: #fff;
+  border: 1px solid $black-4;
+  border-radius: $radius-xl;
+  padding: 32px 28px;
+  height: 100%;
+  box-shadow: 0 4px 24px rgba(10, 34, 64, 0.06);
+
+  @include respond($bp-sm) { padding: 24px 20px; }
+
+  h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: $brand;
+    margin-bottom: 22px;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    color: $gray-2;
+    font-size: 0.9rem;
+    padding: 9px 12px;
+    border-radius: $radius-sm;
+    transition: background $transition-fast, color $transition-fast;
+    cursor: default;
+
+    &:hover { background: $brand-light; color: $brand; }
+  }
+}
+
+.checkIcon {
+  color: $accent;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+// ── MVV grid ──────────────────────────────────────
+.mvvGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+
+  @include respond($bp-md) { grid-template-columns: 1fr; gap: 14px; }
+  @include respond($bp-sm) { gap: 12px; }
+}
+
+.mvvCard {
+  background: #fff;
+  border: 1px solid $black-4;
+  border-radius: $radius-xl;
+  padding: 32px 26px;
+  cursor: default;
+  box-shadow: 0 4px 20px rgba(10, 34, 64, 0.05);
+
+  @include hover-card;
+
+  @include respond($bp-sm) { padding: 24px 20px; }
+
+  h4 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: $accent;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: $gray;
+    font-size: 0.88rem;
+    line-height: 1.75;
+  }
+}
+
+.mvvIcon {
+  @include brand-icon(48px, $radius-md);
+  font-size: 1.3rem;
+  margin-bottom: 18px;
+
+  .mvvCard:hover & {
+    background: $accent-light;
+    color: $accent;
+    transform: scale(1.08) rotate(-4deg);
+  }
+}

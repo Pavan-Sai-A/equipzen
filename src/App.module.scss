@@ -1,0 +1,16 @@
+@use './styles/variables' as *;
+
+.cursorGlow {
+  position: fixed;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(255, 107, 0, 0.05) 0%, transparent 60%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+  will-change: left, top;
+
+  @include respond($bp-md) { display: none; }
+  @media (hover: none) { display: none; }
+}

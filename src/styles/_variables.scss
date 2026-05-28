@@ -1,0 +1,99 @@
+// ── Brand ──────────────────────────────────────────
+$brand:        #0A2240;
+$brand-dark:   #061628;
+$brand-hover:  #0d2e56;
+$brand-glow:   rgba(10, 34, 64, 0.18);
+$brand-light:  rgba(10, 34, 64, 0.07);
+$accent:       #FF6B00;
+$accent-dark:  #e05e00;
+$accent-light: rgba(255, 107, 0, 0.1);
+
+// ── Backgrounds ────────────────────────────────────
+$black:     #ffffff;
+$black-2:   #f4f6fb;
+$black-3:   #eaeff7;
+$black-4:   #dde3ee;
+$footer-bg: #0A2240;
+
+// ── Text ───────────────────────────────────────────
+$white:  #0A2240;
+$gray:   #5a6a7e;
+$gray-2: #3d4f63;
+$muted:  #9aaabb;
+
+// ── Glass ──────────────────────────────────────────
+$glass:        rgba(255, 255, 255, 0.8);
+$glass-border: rgba(10, 34, 64, 0.1);
+
+// ── Gradients ──────────────────────────────────────
+$gradient:      linear-gradient(135deg, #0A2240 0%, #1a4a7a 60%, #FF6B00 100%);
+$gradient-text: linear-gradient(135deg, #0A2240 0%, #1a4a7a 100%);
+
+// ── Spacing ────────────────────────────────────────
+$section-py:      110px;
+$section-py-md:   80px;
+$section-py-sm:   60px;
+$container-max:   1200px;
+$container-px:    32px;
+$container-px-sm: 20px;
+
+// ── Radius ─────────────────────────────────────────
+$radius-sm:   8px;
+$radius-md:   12px;
+$radius-lg:   18px;
+$radius-xl:   20px;
+$radius-pill: 50px;
+
+// ── Transitions ────────────────────────────────────
+$transition-fast: 0.2s ease;
+$transition-base: 0.25s ease;
+$transition-slow: 0.35s ease;
+$ease-out-expo:   cubic-bezier(0.22, 1, 0.36, 1);
+
+// ── Breakpoints ────────────────────────────────────
+$bp-xs: 480px;
+$bp-sm: 600px;
+$bp-md: 820px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+
+// ── Mixins ─────────────────────────────────────────
+@mixin respond($bp) {
+  @media (max-width: $bp) { @content; }
+}
+
+@mixin glass {
+  background: $glass;
+  border: 1px solid $glass-border;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+@mixin brand-icon($size: 48px, $radius: 12px) {
+  width: $size;
+  height: $size;
+  background: $brand-light;
+  border-radius: $radius;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $brand;
+  flex-shrink: 0;
+  transition: background $transition-base, transform $transition-base;
+}
+
+@mixin hover-card {
+  transition: border-color $transition-slow, box-shadow $transition-slow, transform $transition-base;
+  &:hover {
+    border-color: rgba(10, 34, 64, 0.2) !important;
+    box-shadow: 0 20px 48px rgba(10, 34, 64, 0.1);
+    transform: translateY(-4px);
+  }
+}
+
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid $accent;
+    outline-offset: 3px;
+  }
+}

@@ -1,0 +1,198 @@
+@use '../../styles/variables' as *;
+
+.contact {
+  background: $black;
+  position: relative;
+  overflow: hidden;
+}
+
+.bgGlow {
+  position: absolute;
+  width: clamp(250px, 45vw, 600px);
+  height: clamp(250px, 45vw, 600px);
+  background: radial-gradient(circle, rgba(255, 107, 0, 0.06) 0%, transparent 65%);
+  bottom: -10%;
+  right: -8%;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 48px;
+  align-items: start;
+
+  @include respond($bp-lg) { gap: 36px; }
+  @include respond($bp-md) { grid-template-columns: 1fr; gap: 32px; }
+}
+
+// ── Info cards ────────────────────────────────────
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.infoCard {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: #fff;
+  border: 1px solid $black-4;
+  border-radius: $radius-md + 2;
+  padding: 18px 20px;
+  box-shadow: 0 2px 12px rgba(10, 34, 64, 0.05);
+  transition: border-color $transition-slow, box-shadow $transition-slow, transform $transition-base;
+  cursor: default;
+
+  &:hover {
+    border-color: rgba(10, 34, 64, 0.2) !important;
+    box-shadow: 0 8px 28px rgba(10, 34, 64, 0.1);
+    transform: translateX(4px);
+  }
+
+  @include respond($bp-sm) { padding: 14px 16px; }
+}
+
+.infoIcon {
+  @include brand-icon(40px, $radius-sm + 2);
+  font-size: 1rem;
+
+  .infoCard:hover & {
+    background: $accent-light;
+    color: $accent;
+    transform: scale(1.08);
+  }
+}
+
+.infoBody {
+  min-width: 0;
+
+  h4 {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: $accent;
+    margin-bottom: 5px;
+    font-weight: 700;
+  }
+
+  a, p {
+    display: block;
+    color: $gray;
+    font-size: 0.86rem;
+    text-decoration: none;
+    line-height: 1.65;
+    transition: color $transition-base;
+    word-break: break-word;
+  }
+
+  a:hover { color: $brand; }
+  a:focus-visible { outline: 2px solid $accent; border-radius: 2px; }
+}
+
+// ── Form ──────────────────────────────────────────
+.form {
+  background: #fff;
+  border: 1px solid $black-4;
+  border-radius: $radius-xl;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  box-shadow: 0 4px 24px rgba(10, 34, 64, 0.07);
+
+  @include respond($bp-md) { padding: 28px 24px; }
+  @include respond($bp-sm) { padding: 22px 18px; gap: 14px; }
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  @include respond($bp-sm) { grid-template-columns: 1fr; gap: 14px; }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: $brand;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  input,
+  textarea {
+    background: $black-2;
+    border: 1px solid $black-4;
+    border-radius: $radius-sm + 2;
+    padding: 12px 15px;
+    color: $brand;
+    font-family: 'Satoshi', 'Inter', sans-serif;
+    font-size: 0.92rem;
+    outline: none;
+    transition: border-color $transition-base, background $transition-base, box-shadow $transition-base;
+    resize: vertical;
+    width: 100%;
+    min-height: 44px;
+    appearance: none;
+    -webkit-appearance: none;
+
+    &:focus {
+      border-color: $brand;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(10, 34, 64, 0.08);
+    }
+
+    &::placeholder { color: $muted; }
+
+    &:invalid:not(:placeholder-shown) {
+      border-color: rgba(239, 68, 68, 0.5);
+    }
+  }
+
+  textarea { resize: none; min-height: auto; }
+}
+
+.submitBtn {
+  width: 100%;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+// ── Toast ─────────────────────────────────────────
+.toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #16a34a;
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: $radius-md;
+  font-size: 0.9rem;
+  font-weight: 600;
+  z-index: 9999;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  max-width: calc(100vw - 40px);
+
+  &.toastError { background: #dc2626; }
+
+  @include respond($bp-sm) {
+    font-size: 0.82rem;
+    padding: 12px 18px;
+    white-space: normal;
+    text-align: center;
+    justify-content: center;
+  }
+}

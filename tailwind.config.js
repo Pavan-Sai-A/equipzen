@@ -4,19 +4,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        brand: '#155DFC',
-        'brand-dark': '#0e46c7',
-        'brand-glow': 'rgba(21,93,252,0.35)',
+        brand: '#0A2240',
+        'brand-dark': '#061628',
+        'brand-glow': 'rgba(10,34,64,0.18)',
+        accent: '#FF6B00',
+        'accent-dark': '#e05e00',
         black: {
-          DEFAULT: '#0d1117',
-          2: '#161b22',
-          3: '#1c2333',
-          4: '#21262d',
+          DEFAULT: '#ffffff',
+          2: '#f4f6fb',
+          3: '#eaeff7',
+          4: '#dde3ee',
         },
-        'off-white': '#f0f6fc',
+        'off-white': '#0A2240',
         gray: {
-          DEFAULT: '#7d8590',
-          2: '#b1bac4',
+          DEFAULT: '#5a6a7e',
+          2: '#3d4f63',
         },
       },
       fontFamily: {
@@ -24,8 +26,8 @@ module.exports = {
         heading: ['ClashGrotesk-Variable', 'Clash Grotesk', 'Satoshi', 'sans-serif'],
       },
       backgroundImage: {
-        'brand-gradient': 'linear-gradient(135deg, #155DFC 0%, #4d8aff 50%, #7b5ea7 100%)',
-        'text-gradient': 'linear-gradient(135deg, #fff 0%, #6b9fff 100%)',
+        'brand-gradient': 'linear-gradient(135deg, #0A2240 0%, #1a4a7a 60%, #FF6B00 100%)',
+        'text-gradient':  'linear-gradient(135deg, #0A2240 0%, #1a4a7a 100%)',
       },
     },
   },
