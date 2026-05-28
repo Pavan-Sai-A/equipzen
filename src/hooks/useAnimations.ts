@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
-export function useCounter(target: number, duration = 1800, start = false): number {
+export function useCounter(target: number,
+   duration = 1800, start = false): number {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
