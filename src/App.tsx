@@ -1,14 +1,25 @@
-import React, { useEffect, useRef } from 'react';
-import Navbar  from './components/Navbar';
-import Hero    from './components/Hero';
-import Marquee from './components/Marquee';
-import About   from './components/About';
-import Contact from './components/Contact';
-import Footer  from './components/Footer';
-import styles  from './App.module.scss';
+import React, { useEffect, useRef, useState } from 'react';
+import Navbar   from './components/Navbar';
+import Hero     from './components/Hero';
+import Marquee  from './components/Marquee';
+import About    from './components/About';
+import Services from './components/Services';
+import Contact  from './components/Contact';
+import Footer   from './components/Footer';
+import styles   from './App.module.scss';
 
 const App: React.FC = () => {
   const glowRef = useRef<HTMLDivElement>(null);
+  const [scrollPct, setScrollPct] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const el = document.documentElement;
+      setScrollPct((el.scrollTop / (el.scrollHeight - el.clientHeight)) * 100);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   useEffect(() => {
     // Skip on touch-only devices
@@ -35,11 +46,13 @@ const App: React.FC = () => {
 
   return (
     <>
+      <div className={styles.scrollBar} style={{ width: `${scrollPct}%` }} />
       <div className={styles.cursorGlow} ref={glowRef} />
       <Navbar />
       <Hero />
       <Marquee />
       <About />
+      <Services />
       <Contact />
       <Footer />
     </>

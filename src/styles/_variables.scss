@@ -4,9 +4,9 @@ $brand-dark:   #1459cc;
 $brand-hover:  #2278ff;
 $brand-glow:   rgba(27, 110, 243, 0.18);
 $brand-light:  rgba(27, 110, 243, 0.07);
-$accent:       #FF6B00;
-$accent-dark:  #e05e00;
-$accent-light: rgba(255, 107, 0, 0.1);
+$accent:       #0070ff;
+$accent-dark:  #005fd6;
+$accent-light: rgba(0, 112, 255, 0.1);
 
 // ── Backgrounds ────────────────────────────────────
   $black:     #f8faff;
@@ -26,8 +26,8 @@ $glass:        rgba(255, 255, 255, 0.85);
 $glass-border: rgba(27, 110, 243, 0.1);
 
 // ── Gradients ──────────────────────────────────────
-$gradient:      linear-gradient(135deg, #1B6EF3 0%, #1459cc 60%, #FF6B00 100%);
-$gradient-text: linear-gradient(135deg, #1B6EF3 0%, #1459cc 100%);
+$gradient:      linear-gradient(135deg, #1B6EF3 0%, #0070ff 100%);
+$gradient-text: linear-gradient(135deg, #1B6EF3 0%, #0070ff 100%);
 
 // ── Spacing ────────────────────────────────────────
 $section-py:      100px;
@@ -81,6 +81,7 @@ $bp-xl: 1280px;
   flex-shrink: 0;
   transition: background $transition-base, transform $transition-base;
 }
+
 
 @mixin hover-card {
   transition: border-color $transition-slow, box-shadow $transition-slow, transform $transition-base;

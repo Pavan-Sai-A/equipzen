@@ -33,7 +33,7 @@
   position: absolute;
   width: clamp(300px, 50vw, 600px);
   height: clamp(300px, 50vw, 600px);
-  background: radial-gradient(circle, rgba(255, 107, 0, 0.06) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(0, 112, 255, 0.06) 0%, transparent 65%);
   bottom: -5%;
   left: -5%;
   border-radius: 50%;
@@ -116,8 +116,8 @@
 }
 
 @keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0.5); }
-  50%       { box-shadow: 0 0 0 6px rgba(255, 107, 0, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 112, 255, 0.5); }
+  50%       { box-shadow: 0 0 0 6px rgba(0, 112, 255, 0); }
 }
 
 .h1 {
@@ -179,11 +179,15 @@
   flex-wrap: wrap;
   margin-bottom: 56px;
   align-items: center;
-  @include respond($bp-xs) {
+
+  @include respond($bp-sm) {
     flex-direction: column;
     align-items: stretch;
     gap: 10px;
     margin-bottom: 40px;
+
+    // make Link wrappers full width
+    a, > * { width: 100%; }
   }
 }
 
@@ -191,31 +195,37 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
   padding: 13px 28px;
-  border: 1.5px solid rgba(27, 110, 243, 0.25);
+  border: 1.5px solid rgba(27, 110, 243, 0.3);
   color: $brand;
   border-radius: $radius-sm + 2;
   font-weight: 700;
   font-size: 0.93rem;
+  font-family: 'Satoshi', 'Inter', sans-serif;
   cursor: pointer;
   text-decoration: none;
-  background: rgba(255, 255, 255, 0.7);
-  transition: all $transition-base;
+  background: transparent;
+  transition: background $transition-base, color $transition-base, border-color $transition-base, transform $transition-base, box-shadow $transition-base;
   white-space: nowrap;
+  letter-spacing: 0.1px;
+  width: 100%;
 
   @include focus-ring;
 
-  &:hover {
+  &:hover,
+  &:hover * {
     border-color: $brand;
     background: $brand;
     color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(27, 110, 243, 0.2);
+    box-shadow: 0 8px 28px rgba(27, 110, 243, 0.25);
   }
 
   &:active { transform: scale(0.97); }
-  @include respond($bp-sm) { padding: 12px 24px; font-size: 0.9rem; }
+
+  @media (min-width: #{$bp-sm + 1}) {
+    width: auto;
+  }
 }
 
 // ── Stats ─────────────────────────────────────────

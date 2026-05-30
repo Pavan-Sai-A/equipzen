@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   padding: 13px 28px;
-  background: $accent;
+  background: $brand;
   color: #fff;
   border: none;
   border-radius: $radius-sm + 2;
@@ -33,9 +33,9 @@
   }
 
   &:hover {
-    background: $accent-dark;
+    background: $brand-hover;
     transform: translateY(-2px);
-    box-shadow: 0 8px 28px rgba(255, 107, 0, 0.35);
+    box-shadow: 0 8px 28px rgba(27, 110, 243, 0.35);
   }
 
   &:active {
@@ -72,6 +72,7 @@
   @include respond($bp-sm) {
     padding: 12px 24px;
     font-size: 0.9rem;
+    width: 100%;
   }
 }
 

@@ -139,7 +139,7 @@ const Hero: React.FC = () => {
             <GlowButton>Learn More</GlowButton>
           </Link>
           <Link to="contact" smooth duration={350} offset={-70} className={styles.btnGhost}>
-            <span>Get In Touch</span>
+            Get In Touch
           </Link>
         </motion.div>
 

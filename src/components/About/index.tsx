@@ -2,18 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FiCheckCircle, FiTarget, FiEye, FiStar } from 'react-icons/fi';
 import styles from './About.module.scss';
-import type { Skill, MvvItem } from '../../types';
+import type { MvvItem } from '../../types';
 
 const FEATURES = [
   'Experienced Team', 'Innovative Solutions', 'Customer Commitment',
   'Quality & Excellence', 'Competitive Prices', 'Timely Delivery', 'Dedicated Support',
-];
-
-const SKILLS: Skill[] = [
-  { label: 'IT Hardware & Installation', pct: 95 },
-  { label: 'Software Development',       pct: 88 },
-  { label: 'Network Solutions',          pct: 92 },
-  { label: 'Cyber Security',             pct: 85 },
 ];
 
 const MVV: MvvItem[] = [
@@ -44,31 +37,17 @@ const About: React.FC = () => (
 
       <div className={styles.grid}>
         <motion.div
-          className={styles.text}
+          className={styles.visualCol}
           initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p>Equipzen Technologies Private Limited is a forward-thinking technology company committed to delivering innovative, reliable, and scalable solutions.</p>
-          <p>We are a trusted name in the IT hardware industry, focused on delivering superior quality products and reliable solutions across Andhra Pradesh and Telangana.</p>
-
-          <div className={styles.skillBars}>
-            {SKILLS.map(({ label, pct }, i) => (
-              <div key={label}>
-                <div className={styles.skillTop}>
-                  <span>{label}</span>
-                  <span className={styles.skillPct}>{pct}%</span>
-                </div>
-                <div className={styles.skillTrack}>
-                  <motion.div
-                    className={styles.skillFill}
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${pct}%` }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.2, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
-                  />
-                </div>
-              </div>
-            ))}
+          <div className={styles.visualCard}>
+            <div className={styles.visualGradient} />
+            <div className={styles.visualContent}>
+              <span className={styles.tagPill}>Trusted IT Partner</span>
+              <h3>Powering Businesses<br />Across AP &amp; Telangana</h3>
+              <p>Equipzen Technologies is committed to delivering innovative, reliable, and scalable IT hardware and software solutions to businesses across Andhra Pradesh and Telangana.</p>
+            </div>
           </div>
         </motion.div>
 

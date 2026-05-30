@@ -17,23 +17,8 @@
   pointer-events: none;
 }
 
-// ── Centered heading ──────────────────────────────
-.centeredHead {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  :global(.section-sub) {
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-.centeredDivider {
-  margin-left: auto;
-  margin-right: auto;
-}
+.centeredHead {}
+.centeredDivider {}
 
 // ── 2-col grid ────────────────────────────────────
 .grid {
@@ -73,7 +58,7 @@
 .infoIcon {
   width: 40px;
   height: 40px;
-  background: rgba(255, 107, 0, 0.08);
+  background: rgba(0, 112, 255, 0.08);
   border-radius: $radius-md;
   display: flex;
   align-items: center;
@@ -84,7 +69,7 @@
   transition: background $transition-base, transform $transition-base;
 
   .infoCard:hover & {
-    background: rgba(255, 107, 0, 0.14);
+    background: rgba(0, 112, 255, 0.14);
     transform: scale(1.08);
   }
 }

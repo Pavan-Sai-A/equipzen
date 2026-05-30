@@ -29,52 +29,70 @@
   @include respond($bp-md) { grid-template-columns: 1fr; gap: 36px; margin-bottom: 40px; }
 }
 
-.text {
-  p {
-    color: #5a6a7e;
-    line-height: 1.85;
-    margin-bottom: 20px;
-    font-size: 0.97rem;
-    @include respond($bp-sm) { font-size: 0.92rem; }
+// ── Visual card ───────────────────────────────────
+.visualCol { height: 100%; }
+
+.visualCard {
+  position: relative;
+  border-radius: $radius-xl;
+  overflow: hidden;
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-shadow: 0 8px 40px rgba(27, 110, 243, 0.15);
+}
+
+.visualGradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #1B6EF3 0%, #0070ff 60%, #4d9fff 100%);
+  z-index: 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(255,255,255,0.12) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(0,0,0,0.15) 0%, transparent 50%);
   }
 }
 
-// ── Skill bars ────────────────────────────────────
-.skillBars {
-  margin-top: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.visualContent {
+  position: relative;
+  z-index: 1;
+  padding: 36px 32px;
+
+  @include respond($bp-sm) { padding: 28px 24px; }
+
+  h3 {
+    font-size: clamp(1.3rem, 2.5vw, 1.65rem);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.3;
+    margin: 12px 0 16px;
+    letter-spacing: -0.5px;
+  }
+
+  p {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.9rem;
+    line-height: 1.75;
+  }
 }
 
-.skillTop {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-  font-size: 0.84rem;
-  color: #3d4f63;
+.tagPill {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-size: 0.75rem;
   font-weight: 600;
-}
-
-.skillPct {
-  color: $brand;
-  font-weight: 700;
-  font-size: 0.82rem;
-}
-
-.skillTrack {
-  height: 6px;
-  background: rgba(27, 110, 243, 0.1);
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-.skillFill {
-  height: 100%;
-  background: linear-gradient(90deg, $brand, #4d9fff);
-  border-radius: 3px;
-  transform-origin: left;
+  letter-spacing: 0.5px;
+  padding: 5px 14px;
+  border-radius: $radius-pill;
+  backdrop-filter: blur(6px);
 }
 
 // ── Why card ──────────────────────────────────────
@@ -169,7 +187,7 @@
 .mvvIcon {
   width: 48px;
   height: 48px;
-  background: rgba(255, 107, 0, 0.1);
+  background: rgba(0, 112, 255, 0.1);
   border-radius: $radius-md;
   display: flex;
   align-items: center;
@@ -181,7 +199,7 @@
   transition: background $transition-base, transform $transition-base;
 
   .mvvCard:hover & {
-    background: rgba(255, 107, 0, 0.15);
+    background: rgba(0, 112, 255, 0.15);
     transform: scale(1.08) rotate(-4deg);
   }
 }

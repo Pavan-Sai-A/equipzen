@@ -3,7 +3,7 @@ import { Link } from 'react-scroll';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   FiLinkedin, FiTwitter, FiFacebook, FiInstagram,
-  FiArrowUp, FiPhone, FiMail, FiMapPin, FiGlobe,
+  FiArrowUp, FiPhone,
 } from 'react-icons/fi';
 import GlowButton from '../GlowButton';
 import styles from './Footer.module.scss';
@@ -48,36 +48,6 @@ const Footer: React.FC = () => {
                 <a href="tel:+919398919934" className={styles.ctaPhone}>
                   <FiPhone /> +91 9398919934
                 </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Main body — Contact info only */}
-        <div className={styles.body}>
-          <div className="container">
-            <div className={styles.grid}>
-              {/* Contact */}
-              <div>
-                <div className={styles.colHeader}>
-                  <span className={styles.colDot} />
-                  <h5>Contact Us</h5>
-                </div>
-                <ul className={styles.contactList}>
-                  <li><span className={styles.ci}><FiPhone /></span><a href="tel:+919398919934">+91 9398919934</a></li>
-                  <li className={styles.multiLine}>
-                    <span className={styles.ci}><FiMail /></span>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-                      <a href="mailto:md@equipzen.in">md@equipzen.in</a>
-                      <a href="mailto:info@equipzen.in">info@equipzen.in</a>
-                    </div>
-                  </li>
-                  <li><span className={styles.ci}><FiGlobe /></span><a href="https://www.equipzen.in" target="_blank" rel="noreferrer">www.equipzen.in</a></li>
-                  <li className={styles.multiLine}>
-                    <span className={styles.ci}><FiMapPin /></span>
-                    <span>Flat no 406, Aavaas Apartment,<br />Kankipadu 521151,<br />Vijayawada, A.P, India</span>
-                  </li>
-                </ul>
               </div>
             </div>
           </div>
