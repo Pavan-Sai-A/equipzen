@@ -26,7 +26,7 @@ export interface Service {
   icon: React.ReactNode;
   title: string;
   desc: string;
-  cat: 'Software' | 'Hardware';
+  cat: 'Software' | 'Hardware' | 'Manpower';
 }
 
 export interface ContactInfo {

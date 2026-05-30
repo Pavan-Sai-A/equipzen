@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiCode, FiSmartphone, FiCloud, FiShield, FiBarChart2, FiTool, FiHeadphones, FiWifi, FiSettings } from 'react-icons/fi';
+import { FiCode, FiSmartphone, FiCloud, FiShield, FiBarChart2, FiTool, FiHeadphones, FiWifi, FiSettings, FiUsers } from 'react-icons/fi';
 import clsx from 'clsx';
 import styles from './Services.module.scss';
 import type { Service } from '../../types';
@@ -15,9 +15,10 @@ const ALL_SERVICES: Service[] = [
   { icon: <FiHeadphones />, title: 'Maintenance & Support',   desc: 'Comprehensive maintenance to keep your IT infrastructure running smoothly.',            cat: 'Hardware' },
   { icon: <FiWifi />,       title: 'Network Solutions',       desc: 'Reliable network setup, optimization, and troubleshooting for secure communication.',   cat: 'Hardware' },
   { icon: <FiSettings />,   title: 'End-to-End Repairs',      desc: 'Comprehensive repair services for all IT hardware with swift diagnostics.',             cat: 'Hardware' },
+  { icon: <FiUsers />,      title: 'Manpower Services',        desc: 'We provide skilled, semi-skilled, and unskilled manpower to organizations across various industries. Our recruitment process ensures the right talent is matched with the right job, helping businesses improve productivity and efficiency.', cat: 'Manpower' },
 ];
 
-const TABS = ['All', 'Software', 'Hardware'] as const;
+const TABS = ['All', 'Software', 'Hardware', 'Manpower'] as const;
 type Tab = typeof TABS[number];
 
 interface CardProps { icon: React.ReactNode; title: string; desc: string; index: number; featured?: boolean; }
@@ -62,7 +63,8 @@ const Services: React.FC = () => {
   const gridClass =
     active === 'Software' ? styles['bentogrid-sw'] :
     active === 'Hardware' ? styles['bentogrid-hw'] :
-    styles.grid;
+    active === 'Manpower' ? styles['bentogrid-mp'] :
+    styles['bentogrid-all'];
 
   return (
     <section id="services" className={styles.services}>

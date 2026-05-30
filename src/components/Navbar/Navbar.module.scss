@@ -37,12 +37,13 @@
   flex-shrink: 0;
 
   img {
-    width: 38px;
-    height: 38px;
-    border-radius: $radius-sm;
-    object-fit: cover;
+    width: auto;
+    height: 48px;
+    border-radius: 0;
+    object-fit: contain;
+    background: transparent;
     transition: transform $transition-base;
-    @include respond($bp-sm) { width: 32px; height: 32px; }
+    @include respond($bp-sm) { height: 38px; }
   }
 
   &:hover img { transform: scale(1.06); }

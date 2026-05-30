@@ -53,11 +53,7 @@ const Navbar: React.FC = () => {
       <div className={`container ${styles.inner}`}>
         <Link to="home" smooth duration={350}>
           <div className={styles.logo}>
-            <img src="/logo.jpg" alt="Equipzen" />
-            <div className={styles.logoText}>
-              <span className={styles.logoMain}>EQUIPZEN</span>
-              <span className={styles.logoSub}>TECHNOLOGIES</span>
-            </div>
+            <img src="/logo.png" alt="Equipzen" />
           </div>
         </Link>
 

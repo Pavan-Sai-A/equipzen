@@ -67,11 +67,7 @@ const Footer: React.FC = () => {
               {/* Brand col */}
               <div className={styles.brandCol}>
                 <div className={styles.logo}>
-                  <img src="/logo.jpg" alt="Equipzen" />
-                  <div>
-                    <span className={styles.logoName}>EQUIPZEN</span>
-                    <span className={styles.logoTagline}>TECHNOLOGIES</span>
-                  </div>
+                  <img src="/logo.png" alt="Equipzen" />
                 </div>
                 <p className={styles.brandDesc}>
                   Empowering businesses with innovative IT hardware and software solutions across Andhra Pradesh &amp; Telangana.
