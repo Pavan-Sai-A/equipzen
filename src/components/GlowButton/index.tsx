@@ -2,7 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import styles from './GlowButton.module.scss';
 
-type Variant = 'sm' | 'success' | 'loading' | 'navy';
+type Variant = 'sm' | 'success' | 'loading' | 'navy' | 'ghost' | 'cta';
 
 interface Props {
   children: React.ReactNode;
@@ -10,10 +10,10 @@ interface Props {
   className?: string;
   type?: 'button' | 'submit' | 'reset';
   variant?: Variant | Variant[];
+  icon?: React.ReactNode;
 }
 
-const GlowButton: React.FC<Props> = ({ children, onClick, className, type = 'button', variant }) => {
-  const label = typeof children === 'string' ? children : '';
+const GlowButton: React.FC<Props> = ({ children, onClick, className, type = 'button', variant, icon }) => {
   const variants = variant ? (Array.isArray(variant) ? variant : [variant]) : [];
   return (
     <button
@@ -23,6 +23,7 @@ const GlowButton: React.FC<Props> = ({ children, onClick, className, type = 'but
     >
       <span className={styles.text}>
         {children}
+        {icon && <span className={styles.icon}>{icon}</span>}
       </span>
     </button>
   );

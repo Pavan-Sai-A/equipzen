@@ -3,7 +3,7 @@ import { Link } from 'react-scroll';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   FiLinkedin, FiTwitter, FiFacebook, FiInstagram,
-  FiArrowUp, FiPhone,
+  FiArrowUp, FiPhone, FiMail, FiMapPin,
 } from 'react-icons/fi';
 import GlowButton from '../GlowButton';
 import styles from './Footer.module.scss';
@@ -14,6 +14,13 @@ const SOCIALS: Social[] = [
   { Icon: FiTwitter,   label: 'Twitter',   href: 'https://twitter.com/equipzen'              },
   { Icon: FiFacebook,  label: 'Facebook',  href: 'https://www.facebook.com/equipzen'         },
   { Icon: FiInstagram, label: 'Instagram', href: 'https://www.instagram.com/equipzen'        },
+];
+
+const NAV_LINKS = [
+  { label: 'Home',     to: 'home'     },
+  { label: 'About',    to: 'about'    },
+  { label: 'Services', to: 'services' },
+  { label: 'Contact',  to: 'contact'  },
 ];
 
 const YEAR = new Date().getFullYear();
@@ -34,20 +41,91 @@ const Footer: React.FC = () => {
         <div className={styles.cta}>
           <div className={styles.ctaBlob} />
           <div className={`${styles.ctaBlob} ${styles.blob2}`} />
+          <div className={styles.ctaGrid} />
           <div className="container">
-            <div className={styles.ctaRow}>
-              <div>
-                <span className={styles.ctaEyebrow}>Let's Work Together</span>
-                <h2 className={styles.ctaHeading}>Ready to Transform<br />Your Business?</h2>
-                <p className={styles.ctaSub}>Get in touch with our team and let's build something extraordinary.</p>
-              </div>
-              <div className={styles.ctaRight}>
-                <Link to="contact" smooth duration={350} offset={-70}>
+            <div className={styles.ctaInner}>
+              <span className={styles.ctaEyebrow}>Let's Work Together</span>
+              <h2 className={styles.ctaHeading}>Ready to Transform<br />Your Business?</h2>
+              <p className={styles.ctaSub}>Get in touch with our team and let's build something extraordinary.</p>
+              <div className={styles.ctaActions}>
+                <Link to="contact" smooth duration={350} offset={-70} style={{ display: 'flex' }}>
                   <GlowButton>Start a Project</GlowButton>
                 </Link>
                 <a href="tel:+919398919934" className={styles.ctaPhone}>
-                  <FiPhone /> +91 9398919934
+                  <span className={styles.ctaPhoneIcon}><FiPhone /></span>
+                  <span className={styles.ctaPhoneNum}>+91 9398919934</span>
                 </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Footer Body */}
+        <div className={styles.body}>
+          <div className="container">
+            <div className={styles.bodyGrid}>
+              {/* Brand col */}
+              <div className={styles.brandCol}>
+                <div className={styles.logo}>
+                  <img src="/logo.jpg" alt="Equipzen" />
+                  <div>
+                    <span className={styles.logoName}>EQUIPZEN</span>
+                    <span className={styles.logoTagline}>TECHNOLOGIES</span>
+                  </div>
+                </div>
+                <p className={styles.brandDesc}>
+                  Empowering businesses with innovative IT hardware and software solutions across Andhra Pradesh &amp; Telangana.
+                </p>
+                <div className={styles.socials}>
+                  {SOCIALS.map(({ Icon, label, href }) => (
+                    <motion.a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={label}
+                      whileHover={{ y: -3, scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      transition={{ type: 'spring', stiffness: 500, damping: 18 }}
+                    >
+                      <Icon />
+                    </motion.a>
+                  ))}
+                </div>
+              </div>
+
+              {/* Quick links */}
+              <div className={styles.linksCol}>
+                <h5 className={styles.colTitle}><span className={styles.colDot} />Quick Links</h5>
+                <ul>
+                  {NAV_LINKS.map(({ label, to }) => (
+                    <li key={to}>
+                      <Link to={to} smooth duration={350} offset={-70}>{label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Contact info */}
+              <div className={styles.contactCol}>
+                <h5 className={styles.colTitle}><span className={styles.colDot} />Contact</h5>
+                <ul className={styles.contactList}>
+                  <li>
+                    <span className={styles.ci}><FiPhone /></span>
+                    <a href="tel:+919398919934">+91 9398919934</a>
+                  </li>
+                  <li>
+                    <span className={styles.ci}><FiMail /></span>
+                    <div>
+                      <a href="mailto:md@equipzen.in">md@equipzen.in</a>
+                      <a href="mailto:info@equipzen.in">info@equipzen.in</a>
+                    </div>
+                  </li>
+                  <li className={styles.multiLine}>
+                    <span className={styles.ci}><FiMapPin /></span>
+                    <span>Flat no 406, 4th Floor, Aavaas Apartment,<br />Kankipadu 521151,<br />Vijayawada, A.P, India</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -57,31 +135,6 @@ const Footer: React.FC = () => {
         <div className={styles.bar}>
           <div className={`container ${styles.barInner}`}>
             <p>© {YEAR} Equipzen Technologies Private Limited. All Rights Reserved.</p>
-            <div className={styles.barRight}>
-              <div className={styles.logo}>
-                <img src="/logo.jpg" alt="Equipzen" />
-                <div>
-                  <span className={styles.logoName}>EQUIPZEN</span>
-                  <span className={styles.logoTagline}>TECHNOLOGIES</span>
-                </div>
-              </div>
-              <div className={styles.socials}>
-                {SOCIALS.map(({ Icon, label, href }) => (
-                  <motion.a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={label}
-                    whileHover={{ y: -4, scale: 1.12 }}
-                    whileTap={{ scale: 0.9 }}
-                    transition={{ type: 'spring', stiffness: 500, damping: 18 }}
-                  >
-                    <Icon />
-                  </motion.a>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </footer>

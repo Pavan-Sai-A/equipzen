@@ -20,81 +20,11 @@
 .centeredHead {}
 .centeredDivider {}
 
-// ── 2-col grid ────────────────────────────────────
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 32px;
-  align-items: start;
-
-  @include respond($bp-md) { grid-template-columns: 1fr; gap: 24px; }
+// ── Form wrap (centered) ──────────────────────────
+.formWrap {
+  max-width: 680px;
+  margin: 0 auto;
 }
-
-// ── Info panel ────────────────────────────────────
-.infoPanel {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.infoCard {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  background: #fff;
-  border: 1px solid rgba(27, 110, 243, 0.1);
-  border-radius: $radius-lg;
-  padding: 20px;
-  box-shadow: 0 2px 16px rgba(27, 110, 243, 0.05);
-  transition: box-shadow $transition-base, transform $transition-base, border-color $transition-base;
-
-  &:hover {
-    box-shadow: 0 8px 32px rgba(27, 110, 243, 0.1);
-    border-color: rgba(27, 110, 243, 0.2);
-    transform: translateX(4px);
-  }
-}
-
-.infoIcon {
-  width: 40px;
-  height: 40px;
-  background: rgba(0, 112, 255, 0.08);
-  border-radius: $radius-md;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: $accent;
-  font-size: 1rem;
-  flex-shrink: 0;
-  transition: background $transition-base, transform $transition-base;
-
-  .infoCard:hover & {
-    background: rgba(0, 112, 255, 0.14);
-    transform: scale(1.08);
-  }
-}
-
-.infoLabel {
-  font-size: 0.68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: $accent;
-  margin-bottom: 6px;
-}
-
-.infoCard a,
-.infoCard span {
-  display: block;
-  color: #3d4f63;
-  font-size: 0.88rem;
-  text-decoration: none;
-  line-height: 1.65;
-  transition: color $transition-fast;
-  word-break: break-word;
-}
-
-.infoCard a:hover { color: $brand; }
 
 // ── Form ──────────────────────────────────────────
 .form {

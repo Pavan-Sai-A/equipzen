@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiCode, FiSmartphone, FiCloud, FiShield, FiCpu, FiTool, FiHeadphones, FiWifi, FiSettings, FiArrowRight } from 'react-icons/fi';
+import { FiCode, FiSmartphone, FiCloud, FiShield, FiBarChart2, FiTool, FiHeadphones, FiWifi, FiSettings } from 'react-icons/fi';
 import clsx from 'clsx';
 import styles from './Services.module.scss';
 import type { Service } from '../../types';
@@ -10,7 +10,7 @@ const ALL_SERVICES: Service[] = [
   { icon: <FiSmartphone />, title: 'Mobile App Development',  desc: 'User-centric mobile applications for Android and iOS platforms.',                       cat: 'Software' },
   { icon: <FiCloud />,      title: 'Cloud Solutions',         desc: 'Scalable and secure cloud solutions to accelerate digital transformation.',              cat: 'Software' },
   { icon: <FiShield />,     title: 'Cyber Security',          desc: 'Protecting your business with robust security solutions and best practices.',            cat: 'Software' },
-  { icon: <FiCpu />,        title: 'IT Consulting',           desc: 'Expert guidance to help you optimize, innovate, and achieve your goals.',               cat: 'Hardware' },
+  { icon: <FiBarChart2 />,  title: 'IT Consulting',           desc: 'Expert guidance to help you optimize, innovate, and achieve your goals.',               cat: 'Hardware' },
   { icon: <FiTool />,       title: 'IT Hardware Installation',desc: 'Expert installation for seamless hardware integration with optimal performance.',       cat: 'Hardware' },
   { icon: <FiHeadphones />, title: 'Maintenance & Support',   desc: 'Comprehensive maintenance to keep your IT infrastructure running smoothly.',            cat: 'Hardware' },
   { icon: <FiWifi />,       title: 'Network Solutions',       desc: 'Reliable network setup, optimization, and troubleshooting for secure communication.',   cat: 'Hardware' },
@@ -20,9 +20,9 @@ const ALL_SERVICES: Service[] = [
 const TABS = ['All', 'Software', 'Hardware'] as const;
 type Tab = typeof TABS[number];
 
-interface CardProps { icon: React.ReactNode; title: string; desc: string; index: number; }
+interface CardProps { icon: React.ReactNode; title: string; desc: string; index: number; featured?: boolean; }
 
-const ServiceCard: React.FC<CardProps> = ({ icon, title, desc, index }) => {
+const ServiceCard: React.FC<CardProps> = ({ icon, title, desc, index, featured }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -36,7 +36,7 @@ const ServiceCard: React.FC<CardProps> = ({ icon, title, desc, index }) => {
   return (
     <motion.div
       ref={ref}
-      className={styles.card}
+      className={clsx(styles.card, featured && styles.cardFeatured)}
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.95 }}
@@ -48,7 +48,6 @@ const ServiceCard: React.FC<CardProps> = ({ icon, title, desc, index }) => {
       <div className={styles.shine} />
       <div className={styles.cardTop}>
         <div className={styles.icon}>{icon}</div>
-        <FiArrowRight className={styles.arrow} />
       </div>
       <h3>{title}</h3>
       <p>{desc}</p>
@@ -59,6 +58,11 @@ const ServiceCard: React.FC<CardProps> = ({ icon, title, desc, index }) => {
 const Services: React.FC = () => {
   const [active, setActive] = useState<Tab>('All');
   const filtered = active === 'All' ? ALL_SERVICES : ALL_SERVICES.filter(s => s.cat === active);
+
+  const gridClass =
+    active === 'Software' ? styles['bentogrid-sw'] :
+    active === 'Hardware' ? styles['bentogrid-hw'] :
+    styles.grid;
 
   return (
     <section id="services" className={styles.services}>
@@ -90,9 +94,16 @@ const Services: React.FC = () => {
         </div>
 
         <AnimatePresence mode="wait">
-          <motion.div className={styles.grid} key={active}>
+          <motion.div className={gridClass} key={active}>
             {filtered.map(({ icon, title, desc }, i) => (
-              <ServiceCard key={title} icon={icon} title={title} desc={desc} index={i} />
+              <ServiceCard
+                key={title}
+                icon={icon}
+                title={title}
+                desc={desc}
+                index={i}
+                featured={active === 'Software' && i === 0}
+              />
             ))}
           </motion.div>
         </AnimatePresence>

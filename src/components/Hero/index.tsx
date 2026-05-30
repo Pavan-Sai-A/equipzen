@@ -1,17 +1,9 @@
 import React, { useEffect, useRef, useState, memo } from 'react';
 import { Link } from 'react-scroll';
 import { motion } from 'framer-motion';
-import { FiShield, FiCloud, FiSmartphone } from 'react-icons/fi';
 import GlowButton from '../GlowButton';
 import { useCounter, useTypewriter } from '../../hooks/useAnimations';
 import styles from './Hero.module.scss';
-import type { FloatingBadge } from '../../types';
-
-const BADGES: FloatingBadge[] = [
-  { icon: <FiShield />, text: 'Cyber Security',  x: '72%', y: '18%', delay: 0   },
-  { icon: <FiCloud />,  text: 'Cloud Solutions', x: '68%', y: '55%', delay: 0.3 },
-  { icon: <FiSmartphone />, text: 'Mobile Apps', x: '78%', y: '78%', delay: 0.6 },
-];
 
 const up = (d = 0) => ({
   initial: { opacity: 0, y: 32 },
@@ -101,54 +93,37 @@ const Hero: React.FC = () => {
       <div className={styles.glow2} />
       <div className={styles.grid} />
 
-      {BADGES.map(({ icon, text, x, y, delay }) => (
-        <motion.div
-          key={text}
-          className={styles.badge}
-          style={{ left: x, top: y }}
-          initial={{ opacity: 0, scale: 0.7 }}
-          animate={{ opacity: 1, scale: 1, y: [0, -10, 0] }}
-          transition={{
-            opacity: { delay: delay + 1, duration: 0.5 },
-            scale:   { delay: delay + 1, duration: 0.5 },
-            y: { delay: delay + 1.5, duration: 3.5, repeat: Infinity, ease: 'easeInOut' },
-          }}
-        >
-          <span className={styles.badgeIcon}>{icon}</span>
-          {text}
-        </motion.div>
-      ))}
+      <div className="container">
+        <div className={styles.content}>
+          <motion.div className={styles.heroBadge} {...up(0.2)}>
+            <span className={styles.dot} />
+            Trusted IT Partner · AP &amp; Telangana
+          </motion.div>
 
-      <div className={`container ${styles.content}`}>
-        <motion.div className={styles.heroBadge} {...up(0.2)}>
-          <span className={styles.dot} />
-          Trusted IT Partner · AP &amp; Telangana
-        </motion.div>
+          <motion.h1 className={styles.h1} {...up(0.35)}>
+            Innovating Today For a Better <Typewriter />
+          </motion.h1>
 
-        <motion.h1 className={styles.h1} {...up(0.35)}>
-          Innovating Today
-          <span className={styles.line2}>For a Better <Typewriter /></span>
-        </motion.h1>
+          <motion.p className={styles.sub} {...up(0.5)}>
+            Empowering businesses with innovative technology solutions that drive growth and efficiency across every industry.
+          </motion.p>
 
-        <motion.p className={styles.sub} {...up(0.5)}>
-          Empowering businesses with innovative technology solutions that drive growth and efficiency across every industry.
-        </motion.p>
+          <motion.div className={styles.btns} {...up(0.62)}>
+            <Link to="about" smooth duration={350} offset={-70}>
+              <GlowButton variant="ghost">Learn More</GlowButton>
+            </Link>
+            <Link to="contact" smooth duration={350} offset={-70}>
+              <GlowButton>Get In Touch</GlowButton>
+            </Link>
+          </motion.div>
 
-        <motion.div className={styles.btns} {...up(0.62)}>
-          <Link to="about" smooth duration={350} offset={-70}>
-            <GlowButton>Learn More</GlowButton>
-          </Link>
-          <Link to="contact" smooth duration={350} offset={-70} className={styles.btnGhost}>
-            Get In Touch
-          </Link>
-        </motion.div>
-
-        <motion.div className={styles.stats} {...up(0.78)}>
-          <div className={styles.stat}><strong>{c1}+</strong><span>Happy Clients</span></div>
-          <div className={styles.stat}><strong>{c2}%</strong><span>Client Satisfaction</span></div>
-          <div className={styles.stat}><strong>{c3}+</strong><span>Services Offered</span></div>
-          <div className={styles.stat}><strong>24/7</strong><span>Support Available</span></div>
-        </motion.div>
+          <motion.div className={styles.stats} {...up(0.78)}>
+            <div className={styles.stat}><strong>{c1}+</strong><span>Happy Clients</span></div>
+            <div className={styles.stat}><strong>{c2}%</strong><span>Client Satisfaction</span></div>
+            <div className={styles.stat}><strong>{c3}+</strong><span>Services Offered</span></div>
+            <div className={styles.stat}><strong>24/7</strong><span>Support Available</span></div>
+          </motion.div>
+        </div>
       </div>
 
       <div className={styles.scrollMouse}>

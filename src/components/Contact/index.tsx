@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiPhone, FiMail, FiMapPin, FiGlobe, FiCheckCircle } from 'react-icons/fi';
+import { FiCheckCircle } from 'react-icons/fi';
 import GlowButton from '../GlowButton';
 import styles from './Contact.module.scss';
 import type { FormStatus, ContactForm } from '../../types';
@@ -42,54 +42,17 @@ const Contact: React.FC = () => {
         >
           <span className="section-ghost">Get in touch</span>
           <motion.span className="section-label" variants={fadeUp}>Get In Touch</motion.span>
-          <motion.h2 className="section-title" variants={fadeUp}>Contact <span>Us</span></motion.h2>
+          <motion.h2 className="section-title" variants={fadeUp}>Send Us a <span>Message</span></motion.h2>
           <motion.p className="section-sub" variants={fadeUp}>We are here to answer your questions and help you find the right solutions.</motion.p>
           <motion.div className={`divider ${styles.centeredDivider}`} variants={fadeUp} />
         </motion.div>
 
-        <div className={styles.grid}>
-          {/* Info Panel */}
-          <motion.div
-            className={styles.infoPanel}
-            initial={{ opacity: 0, x: -32 }} whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <div className={styles.infoCard}>
-              <div className={styles.infoIcon}><FiPhone /></div>
-              <div>
-                <p className={styles.infoLabel}>Phone</p>
-                <a href="tel:+919398919934">+91 9398919934</a>
-              </div>
-            </div>
-            <div className={styles.infoCard}>
-              <div className={styles.infoIcon}><FiMail /></div>
-              <div>
-                <p className={styles.infoLabel}>Email</p>
-                <a href="mailto:md@equipzen.in">md@equipzen.in</a>
-                <a href="mailto:info@equipzen.in">info@equipzen.in</a>
-              </div>
-            </div>
-            <div className={styles.infoCard}>
-              <div className={styles.infoIcon}><FiGlobe /></div>
-              <div>
-                <p className={styles.infoLabel}>Website</p>
-                <a href="https://www.equipzen.in" target="_blank" rel="noreferrer">www.equipzen.in</a>
-              </div>
-            </div>
-            <div className={styles.infoCard}>
-              <div className={styles.infoIcon}><FiMapPin /></div>
-              <div>
-                <p className={styles.infoLabel}>Office</p>
-                <span>Flat no 406, Aavaas Apartment,<br />Kankipadu 521151,<br />Vijayawada, A.P, India</span>
-              </div>
-            </div>
-          </motion.div>
-
+        <div className={styles.formWrap}>
           {/* Form */}
           <motion.form
             className={styles.form}
             onSubmit={handleSubmit}
-            initial={{ opacity: 0, x: 32 }} whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className={styles.formRow}>
